@@ -2,11 +2,17 @@ import exp from 'express'
 import { connect } from 'mongoose'
 import dotenv from 'dotenv'
 import UserApp from './APIs/UserAPI.js'
-
+import cors from 'cors'
 dotenv.config()
 
 const app = exp()
-
+app.use(
+    cors({
+      origin: ["http://localhost:5173", "http://localhost:5175", "https://user-management-nu-smoky.vercel.app", "http://localhost:5174"],
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+      credentials: true,
+    })
+  )
 app.use(exp.json())
 
 // Mount User API
