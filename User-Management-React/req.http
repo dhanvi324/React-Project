@@ -1,0 +1,36 @@
+### Create User
+POST http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "name": "anvesh",
+    "email": "anvi123@gmail.com",
+    "age": 23
+}
+
+### Get All Active Users
+GET http://localhost:4000/user-api/users
+
+###
+
+### Get User By ID
+GET http://localhost:4000/user-api/user/69a69706162db43363e23633
+
+###
+
+### Update User
+PUT http://localhost:4000/user-api/user/69a69706162db43363e23633
+Content-Type: application/json
+
+{
+    "age": 30
+}
+
+###
+
+### Soft Delete User
+DELETE http://localhost:4000/user-api/user/69a69706162db43363e23633
+
+###
+###Activate user
+PATCH http://localhost:4000/user-api/user/69a69706162db43363e23633
