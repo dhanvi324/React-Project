@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AddUser() {
-  const { addUser } = useOutletContext();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -18,15 +17,35 @@ function AddUser() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    addUser(formData);
+    try {
+      const response = await fetch(
+        "https://react-project-1-00o7.onrender.com/user-api/user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    setFormData({ name: "", age: "", email: "" });
+      const data = await response.json();
 
-    // ✅ optional redirect to list
-    navigate("/UserList");
+      console.log(data.message);
+
+      setFormData({
+        name: "",
+        age: "",
+        email: "",
+      });
+
+      navigate("/UserList");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
