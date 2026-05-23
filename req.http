@@ -1,0 +1,37 @@
+### Create User
+POST https://react-project-1-00o7.onrender.com/user-api/user
+Content-Type: application/json
+
+{
+    "name": "anvesh",
+    "email": "anvi123@gmail.com",
+    "age": 23
+}
+
+### Get All Active Users
+GET https://react-project-1-00o7.onrender.com/user-api/users
+
+###
+
+### Get User By ID
+GET https://react-project-1-00o7.onrender.com/user-api/user/69a69706162db43363e23633
+
+###
+
+### Update User
+PUT https://react-project-1-00o7.onrender.com/user-api/user/69a69706162db43363e23633
+Content-Type: application/json
+
+{
+    "age": 30
+}
+
+###
+
+### Soft Delete User
+DELETE https://react-project-1-00o7.onrender.com/user-api/user/69a69706162db43363e23633
+
+###
+
+### Activate User
+PATCH https://react-project-1-00o7.onrender.com/user-api/user/69a69706162db43363e23633
