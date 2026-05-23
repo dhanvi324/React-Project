@@ -1,7 +1,29 @@
-import { useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function UserList() {
-  const { users } = useOutletContext();
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    try {
+      const response = await fetch(
+        "https://react-project-1-00o7.onrender.com/user-api/users"
+      );
+
+      console.log("STATUS:", response.status);
+
+      const data = await response.json();
+
+      console.log("DATA:", data);
+
+      setUsers(data.payload || []);
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
+  };
 
   return (
     <div className="m-10">
@@ -18,6 +40,7 @@ function UserList() {
               <th className="border p-2">Email</th>
             </tr>
           </thead>
+
           <tbody>
             {users.map((user, index) => (
               <tr key={index}>
